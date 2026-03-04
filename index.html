@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>何も機能はありませんそのため購入画面を入力しても何も送られてきません「農業キット」</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <button class="menu-btn" id="menuOpen">☰</button>
+
+    <nav class="side-menu" id="sideMenu">
+        <button class="close-btn" id="menuClose">×</button>
+        <ul>
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#features">こだわり</a></li>
+            <li><a href="#buy">商品一覧</a></li>
+            <li><a href="quest.html">クエスト</a></li>
+            <li><a href="order.html">ご注文はこちら</a></li>
+        </ul>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+        <div class="hero">
+            <h1>『ゼロから始める、クエスト型リアル農業SLG。』</h1>
+            <p>〜スキマ農業体験〜</p>
+            <a href="#buy" class="cta-button">キットを見る</a>
+        </div>
+
+        <section id="features">
+            <h2>私たちのこだわり</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                <div class="feature-icon">🌱</div>
+                <h3>デイリークエスト</h3>
+                <p>デイリークエストによる挑戦意欲とクリアによる達成感</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🚜</div>
+                <h3>自宅で農業を体験できる</h3>
+                <p>誰でも簡単に農業を始めるきっかけを作れます</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🧺</div>
+                <h3>豊かな季節感</h3>
+                <p>季節によって様々な作物を育てることができます</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-highlight" id="buy">
+        <button class="slide-arrow prev" id="prevBtn">❮</button>
+        <button class="slide-arrow next" id="nextBtn">❯</button>
+
+        <div class="slider-container">
+            <div class="slider-inner" id="sliderInner">
+            
+                <div class="product-slide">
+                    <div class="product-detail">
+                        <div class="product-image">
+                            <img src="New!.jpg" alt="農業スターターキット" class="product-img-content">
+                        </div>
+                        <div class="product-text">
+                            <p class="sub-title">『選べる挑戦、育てる達成感』</p>
+                            <h2>農業スターターキット（クエスト型）</h2>
+                            <p>初心者でも簡単にすぐ育て始めることができます。</p>
+                            <div class="price-box">
+                                <span class="price-label">特別価格</span>
+                                <span class="price-value">6,800円</span>
+                                <span class="price-tax">（税抜）送料別</span>
+                            </div>
+                            <a href="order.html" class="cta-button">オンラインで購入する</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-slide">
+                    <div class="product-detail">
+                        <div class="product-image">
+                            <div style="width:100%; height:300px; background:#e0e0e0; display:flex; align-items:center; justify-content:center; border-radius:15px;">
+                                <img src="tomato.jpg" alt="トマト" class="product-img-content">
+                            </div>
+                        </div>
+                        <div class="product-text">
+                            <p class="sub-title">ミニトマトの種</p>
+                            <h2>アイコ</h2>
+                            <p>初心者でも育てやすい品種です。</p>
+                            <div class="price-box">
+                                <span class="price-label">約17粒</span>
+                                <span class="price-value">605円</span>
+                                <span class="price-tax">（税抜）送料別</span>
+                            </div>
+                            <a href="order.html" class="cta-button">種を注文する</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-slide">
+                    <div class="product-detail">
+                        <div class="product-image">
+                            <img src="nasu.jpg" alt="ナス" class="product-img-content">
+                        </div>
+                        <div class="product-text">
+                            <p class="sub-title">ナスの種</p>
+                            <h2>くろぷり</h2>
+                            <p>中級者向けの品種です。</p>
+                            <div class="price-box">
+                                <span class="price-label">小袋</span>
+                                <span class="price-value">495円</span>
+                                <span class="price-tax">（税抜）送料別</span>
+                            </div>
+                            <a href="order.html" class="cta-button">種を注文する</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-slide">
+                    <div class="product-detail">
+                        <div class="product-image">
+                            <img src="suika.jpg" alt="スイカ" class="product-img-content">
+                        </div>
+                        <div class="product-text">
+                            <p class="sub-title">スイカの種</p>
+                            <h2>大玉スイカ 金山</h2>
+                            <p>上級者向けの品種です。</p>
+                            <div class="price-box">
+                                <span class="price-label">約10粒</span>
+                                <span class="price-value">495円</span>
+                                <span class="price-tax">（税抜）送料別</span>
+                            </div>
+                            <a href="order.html" class="cta-button">種を注文する</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+    <footer>
+        <p>&copy; 2026 Gifu Farm Co. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

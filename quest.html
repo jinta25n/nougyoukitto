@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クエスト一覧 - 農業キット</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        /* クエストページ専用のスタイル */
+        .status-card {
+            background: linear-gradient(135deg, #4a7c44, #2d5a27);
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(45, 90, 39, 0.3);
+        }
+        .exp-bar-bg {
+            background: rgba(255,255,255,0.2);
+            height: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        .exp-bar-fill {
+            background: #ffcc00;
+            height: 100%;
+            width: 65%; /* 初期値 */
+            /* ↓ ここを追加：0.8秒かけて滑らかに動かす */
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.5); /* ほんのり光らせる演出 */
+        }
+        .mission-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .mission-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            border-left: 6px solid #e67e22;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .mission-item.completed {
+            border-left-color: #bdc3c7;
+            opacity: 0.7;
+        }
+        .mission-info { flex: 1; }
+        .mission-title { font-weight: bold; font-size: 1.1rem; display: block; }
+        .mission-reward { font-size: 0.9rem; color: #e67e22; }
+        .mission-btn {
+            background: #2d5a27;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .mission-btn:disabled { background: #ccc; cursor: default; }
+    </style>
+</head>
+<body>
+
+    <button class="menu-btn" id="menuOpen">☰</button>
+
+    <nav class="side-menu" id="sideMenu">
+        <button class="close-btn" id="menuClose">×</button>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="index.html#features">こだわり</a></li>
+            <li><a href="index.html#buy">商品一覧</a></li>
+            <li><a href="quest.html">クエスト</a></li>
+            <li><a href="order.html">ご注文はこちら</a></li>
+        </ul>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+    <main class="quest-container" style="max-width: 600px; margin: 0 auto; padding: 100px 20px;">
+        <h2 style="margin-bottom: 10px;">本日の農園クエスト</h2>
+        <p style="text-align: center; margin-bottom: 30px;">作物を育ててレベルを上げよう！</p>
+
+        <div class="status-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 1.2rem; font-weight: bold;">Lv. 05 新米農家</span>
+                <span>次のレベルまで: 350 EXP</span>
+            </div>
+            <div class="exp-bar-bg">
+                <div class="exp-bar-fill"></div>
+            </div>
+        </div>
+
+        <div class="mission-list">
+            <div class="mission-item">
+                <div class="mission-info">
+                    <span class="mission-title">🌱 土の状態を確認しよう</span>
+                    <span class="mission-reward">報酬: 50 EXP / 100 芽ポイント</span>
+                </div>
+                <button class="mission-btn" onclick="completeMission(this)">完了</button>
+            </div>
+
+            <div class="mission-item">
+                <div class="mission-info">
+                    <span class="mission-title">💧 乾いた土に水をあげよう</span>
+                    <span class="mission-reward">報酬: 100 EXP / 200 芽ポイント</span>
+                </div>
+                <button class="mission-btn" onclick="completeMission(this)">完了</button>
+            </div>
+
+           <div class="mission-item">
+            <div class="mission-info">
+                <span class="mission-title">📷 成長の記録を撮影しよう</span>
+                <span class="mission-reward">報酬: 50 EXP</span>
+                <div id="photoPreviewContainer" style="margin-top: 10px; display: none;">
+                    <img id="photoPreview" src="" alt="プレビュー" style="width: 100%; max-width: 200px; max-height: 150px; object-fit: cover; border-radius: 10px;">
+                <input type="file" id="photoUpload" accept="image/*" style="margin-top: 10px;">
+            </div>
+            <button class="mission-btn" id="cameraBtn" disabled>完了</button>
+        </div>
+            
+            <div class="mission-item completed">
+                <div class="mission-info">
+                    <span class="mission-title">☀️ 朝日を浴びせよう（達成済み）</span>
+                    <span class="mission-reward">報酬: 650 EXP</span>
+                </div>
+                <button class="mission-btn" disabled>済</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" style="color: #2d5a27; text-decoration: none;">← ホームに戻る</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Gifu Farm Co. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+<script>
+    let currentExp = 65; // 現在の進捗率（初期値）
+
+    // クエスト完了時の共通処理
+    function completeMission(btn) {
+        // ボタンの無効化とスタイルの変更
+        btn.innerHTML = "済";
+        btn.disabled = true;
+        btn.parentElement.classList.add('completed');
+
+        // 経験値バーの要素を取得
+        const expBar = document.querySelector('.exp-bar-fill');
+        
+        // 経験値を加算
+        currentExp += 10;
+        if (currentExp > 100) currentExp = 100;
+
+        // バーの幅を更新
+        expBar.style.width = currentExp + "%";
+
+        // 演出：アニメーションが終わる頃にメッセージを表示
+        setTimeout(() => {
+            if (currentExp >= 100) {
+                alert("全クエストクリア！レベルアップしました！✨");
+            } else {
+                alert("クエストクリア！経験値獲得！🌱");
+            }
+        }, 850); 
+    }
+
+    // --- 📷 撮影クエスト専用の処理 ---
+    const photoUpload = document.getElementById('photoUpload');
+    const cameraBtn = document.getElementById('cameraBtn');
+    const photoPreviewContainer = document.getElementById('photoPreviewContainer');
+    const photoPreview = document.getElementById('photoPreview');
+
+if (photoUpload && cameraBtn) {
+    photoUpload.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            const reader = new FileReader();
+
+            // 画像の読み込みが完了した時の処理
+            reader.onload = function(e) {
+                photoPreview.src = e.target.result; // 画像のURLを設定
+                photoPreviewContainer.style.display = 'block'; // プレビュー枠を表示
+            }
+
+            reader.readAsDataURL(this.files[0]); // ファイルを読み込む
+
+            // ボタンを活性化
+            cameraBtn.disabled = false;
+            cameraBtn.style.background = "#2d5a27";
+            alert("写真を確認しました！プレビューが表示されます。");
+        }
+    });
+
+    cameraBtn.addEventListener('click', function() {
+        completeMission(this);
+    });
+}
+</script>
+</body>
+</html>

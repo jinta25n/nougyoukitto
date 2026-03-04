@@ -1,0 +1,475 @@
+/* 基本設定 */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+    line-height: 1.8;
+    color: #2f3e2e; /* 濃い緑がかった黒 */
+    margin: 0;
+    padding: 0;
+    background-color: #fdfbf7; /* 柔らかなクリーム色（紙の質感） */
+}
+
+section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    position: relative;
+    color: #2d5a27; /* 森の緑 */
+}
+
+h2::after {
+    content: '🌿'; /* 植物のモチーフ */
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+/* メニューボタン */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    background: #4a7c44;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 50px; /* 丸みを出して柔らかく */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* サイドメニュー */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: #fff;
+    z-index: 1001;
+    transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    padding-top: 80px;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu ul li a {
+    display: block;
+    padding: 20px 30px;
+    text-decoration: none;
+    color: #2d5a27;
+    font-weight: bold;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.side-menu ul li a:hover {
+    background: #f0f7ef;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+}
+
+/* オーバーレイ */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(45, 90, 39, 0.4); /* 緑がかった透明 */
+    backdrop-filter: blur(4px); /* 背景をぼかす */
+    z-index: 1000;
+}
+
+.overlay.show {
+    display: block;
+}
+
+/* コンテンツ装飾 */
+.hero {
+    background: linear-gradient(rgba(45, 90, 39, 0.6), rgba(45, 90, 39, 0.4)), 
+                url('New!.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 160px 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #e67e22; /* 完熟した果実のようなオレンジ */
+    color: #fff;
+    padding: 18px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    background: #d35400;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 40px 20px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.product-image {
+    flex: 1;
+    min-width: 300px;
+    background: #fff; /* 余白を白にする */
+    height: auto;     /* 高さを固定せず、画像に合わせる場合は auto */
+    min-height: 400px; /* 最低限の高さは確保 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.product-img-content {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 画像を切り取らずに全体を表示する */
+    display: block;
+}
+
+.product-img-content {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 画像全体が欠けずに見えるように変更 */
+    background-color: #fff;
+}
+
+/* 追加：画像が枠にぴったり収まるように調整 */
+.product-img-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 枠に合わせて画像を切り抜き、きれいに収めます */
+    display: block;
+}
+
+.cta-section {
+    text-align: center;
+    background: #eff5ed; /* 非常に薄い緑 */
+    border-radius: 40px;
+    margin: 40px 20px;
+}
+
+footer {
+    background: #2d5a27;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* main.css の後半部分を以下に差し替えてください */
+
+/* 商品紹介セクション全体の調整 */
+.product-highlight {
+    background-color: #fff;
+    border-radius: 40px;
+    margin: 40px auto;
+    padding: 40px; /* 内側に余白を追加 */
+}
+
+/* 左右並びの調整 */
+.product-detail {
+    display: flex;
+    align-items: flex-start; /* 上揃えに変更 */
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap; 
+}
+
+/* 左側：画像の設定（全体を表示） */
+.product-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px; /* 画像が大きすぎないように制限 */
+    height: auto;     /* 高さを固定しないことで全体を表示 */
+    background: none;
+    box-shadow: none;
+}
+
+.product-img-content {
+    width: 100%;
+    height: auto;      /* 縦横比を維持 */
+    object-fit: contain; /* 欠けることなく全体を表示 */
+    display: block;
+    border-radius: 15px;
+}
+
+/* 右側：テキストの設定（左寄せ） */
+.product-text {
+    flex: 1.2;
+    min-width: 300px;
+    text-align: left;
+}
+
+.product-text h2 {
+    text-align: left;
+    margin: 10px 0 20px 0;
+}
+
+.product-text h2::after {
+    margin: 10px 0 0 0; /* 装飾の🌿を左に寄せる */
+}
+
+.sub-title {
+    color: #4a7c44;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.price-box {
+    margin: 30px 0;
+    padding: 20px;
+    background: #fdfbf7;
+    border-left: 5px solid #e67e22;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.price-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+/* 注文フォームのスタイル */
+.order-section {
+    background-color: #f0f7ef; /* 薄い緑の背景 */
+    border-radius: 40px;
+    margin-bottom: 80px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #2d5a27;
+}
+
+.form-group label span {
+    background: #e67e22;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; /* 幅の計算を調整 */
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    background: #2d5a27;
+    color: #fff;
+    padding: 18px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background: #4a7c44;
+}
+/* スライダーの外枠 */
+.product-highlight {
+    position: relative; /* ボタンの基準にする */
+    overflow: hidden;   /* はみ出たスライドを隠す */
+}
+
+.slider-container {
+    width: 100%;
+}
+
+.slider-inner {
+    display: flex;
+    width: 200%; /* 2枚なら200% */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-slide {
+    width: 50%; /* 200%の中の半分 */
+    flex-shrink: 0;
+}
+
+/* 左右の矢印ボタンのスタイル */
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(45, 90, 39, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 20px;
+    transition: background 0.3s;
+}
+
+.slide-arrow:hover {
+    background: #e67e22;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* スマホ対応：矢印の位置を少し調整 */
+@media (max-width: 768px) {
+    .slide-arrow {
+        top: auto;
+        bottom: 10px;
+        transform: none;
+    }
+    .prev { left: 30%; }
+    .next { right: 30%; }
+}
+
+/* 親要素：ボタンの基準位置にする */
+.product-highlight {
+    position: relative; 
+    padding: 60px 20px;
+    background-color: #f9fbf9;
+    overflow: hidden; /* はみ出た2枚目のスライドを隠す */
+}
+
+/* スライダー全体の枠 */
+.slider-container {
+    max-width: 1000px; /* 元のサイトのデザインに合わせる */
+    margin: 0 auto;
+}
+
+/* 横に並べるための中身 */
+.slider-inner {
+    display: flex;
+    width: 400%; /* 【修正】200% から 400% に変更 */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 各スライドの幅 */
+.product-slide {
+    width: 25%; /* 【修正】100% / 4枚 = 25% に変更 */
+    flex-shrink: 0;
+}
+
+/* ボタンのスタイル（画像に被らないよう調整） */
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(45, 90, 39, 0.7);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.slide-arrow:hover {
+    background: #2d5a27;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* スマホではボタンを下に移動させると見やすい */
+@media (max-width: 768px) {
+    .slide-arrow {
+        top: auto;
+        bottom: 10px;
+        transform: none;
+    }
+    .prev { left: 30%; }
+    .next { right: 30%; }
+}

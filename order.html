@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご注文フォーム - 農業キット</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body style="padding-top: 50px;"> <section id="order-form" class="order-section">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="index.html" style="color: #2d5a27; text-decoration: none;">← 商品ページに戻る</a>
+        </div>
+        
+        <h2>ご注文・お問い合わせ</h2>
+        <p style="text-align: center; margin-bottom: 30px;">以下のフォームに必要事項を入力し、送信してください。</p>
+        
+        <form action="thanks.html" method="get" class="contact-form">
+            <div class="form-group">
+                <label for="name">お名前<span>必須</span></label>
+                <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+            </div>
+            <div class="form-group">
+                <label for="email">メールアドレス<span>必須</span></label>
+                <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+            </div>
+            <div class="form-group">
+                <label for="address">お届け先住所<span>必須</span></label>
+                <input type="text" id="address" name="address" placeholder="東京都渋谷区..." required>
+            </div>
+            <div class="form-group">
+                <label for="plan">ご希望のキット</label>
+                <select id="plan" name="plan">
+                    <option value="starter">農業スターターキット（6,800円税抜）</option>
+                    <option value="tomato">アイコ 約17粒（605円税抜）</option>
+                    <option value="nasu">くろぷり 小袋（495円税抜）</option>
+                    <option value="suika">アイコ 約10粒（495円税抜）</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">備考・ご質問</label>
+                <textarea id="message" name="message" rows="5" placeholder="ご要望などあればご記入ください"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">注文内容を確認する</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Gifu Farm Co. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
